@@ -18,6 +18,8 @@ void MenuProduct();//Menu san pham
 
 void HienThiStore();//hien thi
 
+void HienThiProduct();//hien thi
+
 void ThemStore();//them
 
 void updateStore();//sua

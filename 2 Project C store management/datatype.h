@@ -10,5 +10,11 @@ typedef struct{
 	char Name[100];
 	int isDeleted;
 }Store;
+typedef struct{
+	int id;
+	char Name[100];
+	int Quality;
+	int Price;
+}Product;
 int n;
 

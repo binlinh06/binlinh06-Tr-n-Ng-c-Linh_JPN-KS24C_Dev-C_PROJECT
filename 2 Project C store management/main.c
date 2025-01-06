@@ -11,6 +11,12 @@ int main(int argc, char *argv[]) {
 	{2,"Do uong"},
 	{3,"Quan ao"},
 };
+	int p=3;
+	Product products[100]={
+	{1,"Pizza",1,300000},
+	{2,"Banh mi",1,10000},
+	{3,"Mi tom",1,3000},
+};
 	int deletedIds[100];
     int deletedCount =0;
     loadStoresFromFile(stores, &n);//luufile
@@ -126,10 +132,26 @@ switch(choice){
 					MenuProduct();
 					choicee(&choice);
 		            switch(choice){
+		            	case 8:
+		            		system("cls");
+		            		continue;
+		            	
 		            	case 1:
+		            		system("cls");
+		            		HienThiStore(stores, &n);
+		            		choicee(&choice);
+		            		HienThiProduct(products,&p);
+		            		Back(&choice);
+						    if(choice==1){
+						    	system("cls");
+						    	continue;
+							}else{
+								return 0;
+							}
 		            		break;
+		            		
 					}
-				}while(choice!=0);
+				}while(choice!=0&&choice!=8);
 		    }
 
 		}while(choice!=0);

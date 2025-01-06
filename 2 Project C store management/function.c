@@ -88,6 +88,7 @@ void MenuProduct(){//Menu san pham
 	printf("\t[5].Tim kiem san pham theo ten\n");
 	printf("\t[6].Sap xep san pham theo gia\n");
 	printf("\t[7].Loc san pham\n");
+	printf("\t[8].Quay lai Store\n");
 	printf("\t[0].Thoat\n");
 	printf("\t=====================================\n");
 }
@@ -102,6 +103,19 @@ void HienThiStore(Store stores[], int *n){
         printf("| %4d     | %-45s |\n", 
                stores[i].id, stores[i].Name);
         printf("|----------|-----------------------------------------------|\n");
+    }
+}
+
+void HienThiProduct(Product products[], int *p){
+    printf("\n\t***ALL PRODUCT***\n");
+    printf("|==========|===============================================|==========|==================|\n");
+    printf("|    ID    |                      Name                     | Quality  |      Price       |\n");
+    printf("|==========|===============================================|==========|==================|\n");
+    int i;
+    for (i = 0; i <*p; i++) {
+        printf("| %4d     | %-45s | %4d     |%12d VND  |\n", 
+               products[i].id, products[i].Name, products[i].Quality, products[i].Price);
+        printf("|----------|-----------------------------------------------|----------|------------------|\n");
     }
 }
 void ThemStore(Store stores[], int *n, int deletedIds[], int *deletedCount) {
