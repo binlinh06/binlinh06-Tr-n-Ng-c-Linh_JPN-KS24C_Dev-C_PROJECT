@@ -12,7 +12,9 @@ void BeginStore();//hien thi lua chon login
 
 void loginAdmin();//dang nhap admin
 
-void MenuStore();//Menu
+void MenuStore();//Menu danh muc
+
+void MenuProduct();//Menu san pham
 
 void HienThiStore();//hien thi
 
@@ -31,3 +33,4 @@ void SoftStoreByName2();//Sap xep be den lon
 void loadStoresFromFile();
 
 void saveStoresToFile();
+

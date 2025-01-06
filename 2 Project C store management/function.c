@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h> 
 #include "function.h"
+
 //logic ham
 void choicee(int *choice){//lua chon
 	printf("\tMoi ban lua chon : ");
@@ -23,6 +24,7 @@ void YesOrNo(int *choice){//lua chon
 }
 
 void BeginStore(){//hien thi dau tien
+	system("cls");
 	printf("\n\t***Store Management System Using C***\n");
 	printf("\n\tCHOOSE YOUR ROLE\n");
 	printf("\t===============\n");
@@ -33,6 +35,7 @@ void BeginStore(){//hien thi dau tien
 }
 
 void loginAdmin(){//ADMIN
+	system("cls");
 	struct login logAdmin;
 	char checkEmail[] =  "admin@email.com";//tai khoan admin
 	char checkPass[] = "12345";//Mat khau admin
@@ -41,10 +44,10 @@ void loginAdmin(){//ADMIN
 	printf("\n\t\t***LOGIN ADMIN***\n"); 
 	fflush(stdin);	 
 	printf("\t====================================\n");
-	printf("\tEmail: ");//Yeu cau nguoi dung nhap tai khoan
+	printf("\tEmail(admin@email.com): ");//Yeu cau nguoi dung nhap tai khoan
 	fgets(logAdmin.Email,sizeof(logAdmin.Email),stdin);
 	logAdmin.Email[strcspn(logAdmin.Email, "\n")] = '\0';
-	printf("\tPassword: ");;//yeu cau nguoi dung nhap mat khau
+	printf("\tPassword(12345): ");;//yeu cau nguoi dung nhap mat khau
 	fgets(logAdmin.Password,sizeof(logAdmin.Password),stdin);
 	logAdmin.Password[strcspn(logAdmin.Password, "\n")] = '\0';
 	printf("\t====================================\n");
@@ -59,10 +62,9 @@ void loginAdmin(){//ADMIN
 }while(strcmp(logAdmin.Email,checkEmail) !=0 && strcmp(logAdmin.Password,checkPass) != 0);//while
 
 }
-
 void MenuStore(){//Menu store
 	printf("\n\t***Store Management System Using C***\n");
-	printf("\n\t\tProduct Management\n");
+	printf("\n\t\tStore Management\n");
 	printf("\t=====================================\n");
 	printf("\t[1].Hien thi danh sach danh muc\n");
 	printf("\t[2].Them danh muc\n");
@@ -70,17 +72,33 @@ void MenuStore(){//Menu store
 	printf("\t[4].Xoa danh muc\n");
 	printf("\t[5].Tim kiem danh muc theo ten\n");
 	printf("\t[6].Sap xep danh muc theo ten\n");
+	printf("\t[7].San pham\n");
 	printf("\t[0].Thoat\n");
 	printf("\t=====================================\n");
 }
 
-void HienThiStore(Store stores[], int n){	
+void MenuProduct(){//Menu san pham
+	printf("\n\t***Product Management System Using C***\n");
+	printf("\n\t\tProduct Management\n");
+	printf("\t=====================================\n");
+	printf("\t[1].Hien thi danh sach san pham\n");
+	printf("\t[2].Them san pham\n");
+	printf("\t[3].Sua san pham\n");
+	printf("\t[4].Xoa san pham\n");
+	printf("\t[5].Tim kiem san pham theo ten\n");
+	printf("\t[6].Sap xep san pham theo gia\n");
+	printf("\t[7].Loc san pham\n");
+	printf("\t[0].Thoat\n");
+	printf("\t=====================================\n");
+}
+
+void HienThiStore(Store stores[], int *n){	
     printf("\n\t\t***ALL CATEGORY LISH***\n");
     printf("|==========|===============================================|\n");
     printf("|    ID    |              Category Name                    |\n");
     printf("|==========|===============================================|\n");
 	int i;
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < *n; i++) {
         printf("| %4d     | %-45s |\n", 
                stores[i].id, stores[i].Name);
         printf("|----------|-----------------------------------------------|\n");
@@ -172,8 +190,8 @@ void updateStore(Store stores[], int n){//Sua
 		printf("\tKhong tim thay danh muc de sua\n ");
 	}else{
 		getchar();
-        int maxNameLength = 45; // Ð? dài t?i da c?a tên danh m?c
-        char tempName[100]; // Dùng d? nh?p tên m?i
+        int maxNameLength = 45; // Do dai toi da cua ten danh muc
+        char tempName[100]; // Dung du nhap ten moi
 
         while (1) {
             printf("\tMoi ban nhap vao ten danh muc moi: ");
@@ -188,7 +206,7 @@ void updateStore(Store stores[], int n){//Sua
                 continue;
             }
 
-            // Ki?m tra tên quá dài
+            // Kiem tra tên quá dài
             if (strlen(tempName) > maxNameLength) {
                 printf("\tLoi: Ten danh muc qua dai (toi da %d ky tu). Vui long nhap lai.\n", maxNameLength);
                 continue;
@@ -251,7 +269,7 @@ void deleteStore(Store stores[],  int *n,int deletedIds[], int *deletedCount){
 	}
 }
 
-// Chuy?n chu?i sang ch? thu?ng
+// Chuyen chuoi sang chu thuong
 void toLowerCase(char str[]) {
 	int i;
     for ( i = 0; str[i]; i++) {
@@ -259,17 +277,17 @@ void toLowerCase(char str[]) {
     }
 }
 
-// Hàm tìm ki?m danh m?c theo tên
+// Ham tim kiem danh mc theo tên
 void FindByName(Store stores[], int n) {
     char search[100], tempName[100];
     int found = 0;
 
-    getchar(); // Xóa ký t? xu?ng dòng trong b? d?m
+    getchar(); // Xoa ky tu xuong dong trong bo dem
     printf("\n\t\t***ALL CATEGORY LISH***\n");
     printf("\n\tNhap ten danh muc muon tim: ");
     fgets(search, 100, stdin);
-    search[strcspn(search, "\n")] = '\0'; // Lo?i b? ký t? xu?ng dòng
-    toLowerCase(search); // Chuy?n chu?i tìm ki?m sang ch? thu?ng
+    search[strcspn(search, "\n")] = '\0'; // Loai bo ky tu xuong dong
+    toLowerCase(search); // Chuyen chuoi tim kiem sang chu thuong
 
     printf("\n\tKet qua tim kiem:\n");
     printf("|==========|===============================================|\n");
@@ -280,7 +298,7 @@ void FindByName(Store stores[], int n) {
         strcpy(tempName, stores[i].Name); // Sao chep ten danh muc
         toLowerCase(tempName);           // Chuyen ten danh muc sang chu thuong
 
-        if (strstr(tempName, search) != NULL) { // Tìm ki?m chu?i con
+        if (strstr(tempName, search) != NULL) { // Tim kiem chuoi con
             printf("| %4d     | %-45s |\n", stores[i].id, stores[i].Name);
             found = 1;
         }
@@ -327,36 +345,32 @@ void SoftStoreByName2(Store stores[], int *n){
 }
 
 void loadStoresFromFile(Store stores[], int *n) {
-    FILE *file = fopen("stores.txt", "r"); // M? file d? d?c
+    FILE *file = fopen("stores.dat","rb"); // M? file d? d?c
     if (file == NULL) {
         printf("\tLoi: Khong the mo file de doc.\n");
-        return;
-    }
-
-    *n = 0;
-    while (fscanf(file, "%d,%49[^\n]", &stores[*n].id, stores[*n].Name) == 2) {
-        stores[*n].isDeleted = 0;  // Gi? s? không có danh m?c nào b? xóa khi d?c
-        (*n)++;
-    }
-
+    } 
+	Store ReadStore[100];
+	*n = fread(ReadStore, sizeof(Store),100,file);
+	int i;
+	for(i=0 ;i < *n;i++){
+		stores[i] = ReadStore[i];
+	}
+	printf("\tDu lieu da duoc tai ve thanh cong!\n");
     fclose(file); // Ðóng file
-    printf("\tDu lieu da duoc tai ve thanh cong!\n");
 }
 
-void saveStoresToFile(Store stores[], int n) {
-    FILE *file = fopen("stores.txt", "w"); // M? file d? ghi (xóa n?i dung cu)
-    if (file == NULL) {
-        printf("\tLoi: Khong the mo file de ghi.\n");
-        return;
-    }
-	int i;
-    for ( i = 0; i < n; i++) {
-        // Ki?m tra n?u danh m?c chua b? xóa
-        if (stores[i].isDeleted == 0) {
-            fprintf(file, "%d,%s\n", stores[i].id, stores[i].Name); // Ghi ID và tên vào file
-        }
-    }
-
-    fclose(file); // Ðóng file
-    printf("\tDu lieu da duoc luu thanh cong!\n");
+void saveStoresToFile(Store stores[], int *n) {
+			
+			//Mo FILE
+			FILE *file;
+			file = fopen("stores.dat","wb");//LUU FILE
+			
+			//Thao tac voi FILE
+			if(file == NULL){//Kiem tra FIle
+				printf("Khong mo  duoc FILE\n");
+			}
+			fwrite(stores, sizeof(Store), *n, file);
+			printf("Luu FILE thanh cong\n");
+			//Dong FILE
+			fclose(file);	
 }

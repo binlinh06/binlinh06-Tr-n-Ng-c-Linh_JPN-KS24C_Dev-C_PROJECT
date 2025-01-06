@@ -12,8 +12,8 @@ int main(int argc, char *argv[]) {
 	{3,"Quan ao"},
 };
 	int deletedIds[100];
-    int deletedCount = 0;
-	loadStoresFromFile(stores, &n);//luufile
+    int deletedCount =0;
+    loadStoresFromFile(stores, &n);//luufile
 do{	
 	//Hien thi Menu dang nhap tai khoan , mat khau
 	system("cls");
@@ -27,74 +27,72 @@ switch(choice){
 	
 	case 1://login admin
 		system("cls");
-		
+//		loginAdmin();
 		do{
-			system("cls");
 			MenuStore();
 		    choicee(&choice);
 		    switch(choice){
-		    	
 			case 1://Hienthi
 				system("cls");
-			    HienThiStore(stores, n);
+			    HienThiStore(stores, &n);
 			    Back(&choice);
 			    if(choice==1){
 			    	system("cls");
 			    	continue;
 				}else{
-					saveStoresToFile(stores, n);//Luu khi thoat
+					saveStoresToFile(stores, &n);//Luu khi thoat
 					return 0;
 				}
 				break;
 				
 			case 2://Them
 				system("cls");
-				HienThiStore(stores, n);
+				HienThiStore(stores, &n);
 				ThemStore(stores, &n, deletedIds, &deletedCount);
-				saveStoresToFile(stores, n);//Luu khi thay doi
+				saveStoresToFile(stores, &n);//Luu khi thay doi
 				Back(&choice);
 			    if(choice==1){
 			    	system("cls");
 			    	continue;
 				}else{
-					saveStoresToFile(stores, n);//Luu khi thoat
+					saveStoresToFile(stores, &n);//Luu khi thoat
 					return 0;
 				}
 				break;
 				
 			case 3://Sua
 				system("cls");
-				HienThiStore(stores, n);
+				HienThiStore(stores, &n);
 				updateStore(stores, n);
-				saveStoresToFile(stores, n);//Luu khi thay doi
+				saveStoresToFile(stores, &n);//Luu khi thay doi
 				Back(&choice);
 			    if(choice==1){
 			    	system("cls");
 			    	continue;
 				}else{
-					saveStoresToFile(stores, n);//Luu khi thoat
+					saveStoresToFile(stores, &n);//Luu khi thoat
 					return 0;
 				}
 				break;
 				
 			case 4://Xoa
 				system("cls");
-				HienThiStore(stores, n);
+				HienThiStore(stores, &n);
 				deleteStore(stores, &n, deletedIds, &deletedCount);
-				saveStoresToFile(stores, n);//Luu khi thay doi
+				saveStoresToFile(stores, &n);//Luu khi thay doi
 				Back(&choice);
 			    if(choice==1){
 			    	system("cls");
 			    	continue;
 				}else{
-					saveStoresToFile(stores, n);//Luu khi thoat
+					saveStoresToFile(stores, &n);//Luu khi thoat
 					return 0;
 				}
 				break;
 				
 			case 5://Tim kiem theo ten
 			system("cls");
-				FindByName(stores, n);
+				FindByName(stores,&n);
 				Back(&choice);
 			    if(choice==1){
 			    	system("cls");
@@ -106,7 +104,7 @@ switch(choice){
 			
 			case 6://Sap xep
 				system("cls");
-				HienThiStore(stores, n);
+				HienThiStore(stores, &n);
 				ChonThuTu(&choice);
 				if(choice==1){
 					SoftStoreByName1(stores, &n);
@@ -121,7 +119,19 @@ switch(choice){
 					return 0;
 				}
 				break;	
+			
+			case 7:
+				do{
+					system("cls");
+					MenuProduct();
+					choicee(&choice);
+		            switch(choice){
+		            	case 1:
+		            		break;
+					}
+				}while(choice!=0);
 		    }
+
 		}while(choice!=0);
 		break;
 	
