@@ -37,14 +37,14 @@ void BeginStore(){//hien thi dau tien
 void loginAdmin(){//ADMIN
 	system("cls");
 	struct login logAdmin;
-	char checkEmail[] =  "admin@email.com";//tai khoan admin
+	char checkEmail[] =  "admin@gmail.com";//tai khoan admin
 	char checkPass[] = "12345";//Mat khau admin
 	char testPass;
 	do{//Neu nguoi dung dang nhap sai se duoc dang nhap lai
 	printf("\n\t\t***LOGIN ADMIN***\n"); 
 	fflush(stdin);	 
 	printf("\t====================================\n");
-	printf("\tEmail(admin@email.com): ");//Yeu cau nguoi dung nhap tai khoan
+	printf("\tEmail(admin@gmail.com): ");//Yeu cau nguoi dung nhap tai khoan
 	fgets(logAdmin.Email,sizeof(logAdmin.Email),stdin);
 	logAdmin.Email[strcspn(logAdmin.Email, "\n")] = '\0';
 	printf("\tPassword(12345): ");;//yeu cau nguoi dung nhap mat khau
@@ -73,6 +73,7 @@ void MenuStore(){//Menu store
 	printf("\t[5].Tim kiem danh muc theo ten\n");
 	printf("\t[6].Sap xep danh muc theo ten\n");
 	printf("\t[7].San pham\n");
+	printf("\t[8].Quay lai Admin\n");
 	printf("\t[0].Thoat\n");
 	printf("\t=====================================\n");
 }

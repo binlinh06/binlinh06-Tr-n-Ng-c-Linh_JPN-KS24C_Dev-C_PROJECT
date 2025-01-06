@@ -33,129 +33,133 @@ switch(choice){
 	
 	case 1://login admin
 		system("cls");
-//		loginAdmin();
+		loginAdmin();
 		do{
 			MenuStore();
 		    choicee(&choice);
 		    switch(choice){
-			case 1://Hienthi
-				system("cls");
-			    HienThiStore(stores, &n);
-			    Back(&choice);
-			    if(choice==1){
-			    	system("cls");
-			    	continue;
-				}else{
-					saveStoresToFile(stores, &n);//Luu khi thoat
-					return 0;
-				}
-				break;
-				
-			case 2://Them
-				system("cls");
-				HienThiStore(stores, &n);
-				ThemStore(stores, &n, deletedIds, &deletedCount);
-				saveStoresToFile(stores, &n);//Luu khi thay doi
-				Back(&choice);
-			    if(choice==1){
-			    	system("cls");
-			    	continue;
-				}else{
-					saveStoresToFile(stores, &n);//Luu khi thoat
-					return 0;
-				}
-				break;
-				
-			case 3://Sua
-				system("cls");
-				HienThiStore(stores, &n);
-				updateStore(stores, n);
-				saveStoresToFile(stores, &n);//Luu khi thay doi
-				Back(&choice);
-			    if(choice==1){
-			    	system("cls");
-			    	continue;
-				}else{
-					saveStoresToFile(stores, &n);//Luu khi thoat
-					return 0;
-				}
-				break;
-				
-			case 4://Xoa
-				system("cls");
-				HienThiStore(stores, &n);
-				deleteStore(stores, &n, deletedIds, &deletedCount);
-				saveStoresToFile(stores, &n);//Luu khi thay doi
-				Back(&choice);
-			    if(choice==1){
-			    	system("cls");
-			    	continue;
-				}else{
-					saveStoresToFile(stores, &n);//Luu khi thoat
-					return 0;
-				}
-				break;
-				
-			case 5://Tim kiem theo ten
-			system("cls");
-				FindByName(stores,&n);
-				Back(&choice);
-			    if(choice==1){
-			    	system("cls");
-			    	continue;
-				}else{
-					return 0;
-				}
-				break;
-			
-			case 6://Sap xep
-				system("cls");
-				HienThiStore(stores, &n);
-				ChonThuTu(&choice);
-				if(choice==1){
-					SoftStoreByName1(stores, &n);
-				}else{
-					SoftStoreByName2(stores, &n);
-				}
-				Back(&choice);
-			    if(choice==1){
-			    	system("cls");
-			    	continue;
-				}else{
-					return 0;
-				}
-				break;	
-			
-			case 7:
-				do{
+		    	case 8:
+		    		system("cls");
+		    		continue;
+		    		
+				case 1://Hienthi
 					system("cls");
-					MenuProduct();
-					choicee(&choice);
-		            switch(choice){
-		            	case 8:
-		            		system("cls");
-		            		continue;
-		            	
-		            	case 1:
-		            		system("cls");
-		            		HienThiStore(stores, &n);
-		            		choicee(&choice);
-		            		HienThiProduct(products,&p);
-		            		Back(&choice);
-						    if(choice==1){
-						    	system("cls");
-						    	continue;
-							}else{
-								return 0;
-							}
-		            		break;
-		            		
+				    HienThiStore(stores, &n);
+				    Back(&choice);
+				    if(choice==1){
+				    	system("cls");
+				    	continue;
+					}else{
+						saveStoresToFile(stores, &n);//Luu khi thoat
+						return 0;
 					}
-				}while(choice!=0&&choice!=8);
-		    }
-
-		}while(choice!=0);
-		break;
+					break;
+					
+				case 2://Them
+					system("cls");
+					HienThiStore(stores, &n);
+					ThemStore(stores, &n, deletedIds, &deletedCount);
+					saveStoresToFile(stores, &n);//Luu khi thay doi
+					Back(&choice);
+				    if(choice==1){
+				    	system("cls");
+				    	continue;
+					}else{
+						saveStoresToFile(stores, &n);//Luu khi thoat
+						return 0;
+					}
+					break;
+					
+				case 3://Sua
+					system("cls");
+					HienThiStore(stores, &n);
+					updateStore(stores, n);
+					saveStoresToFile(stores, &n);//Luu khi thay doi
+					Back(&choice);
+				    if(choice==1){
+				    	system("cls");
+				    	continue;
+					}else{
+						saveStoresToFile(stores, &n);//Luu khi thoat
+						return 0;
+					}
+					break;
+					
+				case 4://Xoa
+					system("cls");
+					HienThiStore(stores, &n);
+					deleteStore(stores, &n, deletedIds, &deletedCount);
+					saveStoresToFile(stores, &n);//Luu khi thay doi
+					Back(&choice);
+				    if(choice==1){
+				    	system("cls");
+				    	continue;
+					}else{
+						saveStoresToFile(stores, &n);//Luu khi thoat
+						return 0;
+					}
+					break;
+					
+				case 5://Tim kiem theo ten
+				system("cls");
+					FindByName(stores,&n);
+					Back(&choice);
+				    if(choice==1){
+				    	system("cls");
+				    	continue;
+					}else{
+						return 0;
+					}
+					break;
+				
+				case 6://Sap xep
+					system("cls");
+					HienThiStore(stores, &n);
+					ChonThuTu(&choice);
+					if(choice==1){
+						SoftStoreByName1(stores, &n);
+					}else{
+						SoftStoreByName2(stores, &n);
+					}
+					Back(&choice);
+				    if(choice==1){
+				    	system("cls");
+				    	continue;
+					}else{
+						return 0;
+					}
+					break;	
+				
+				case 7:
+					do{
+						system("cls");
+						MenuProduct();
+						choicee(&choice);
+			            switch(choice){
+			            	case 8:
+			            		system("cls");
+			            		continue;
+			            	
+			            	case 1:
+			            		system("cls");
+			            		HienThiStore(stores, &n);
+			            		choicee(&choice);
+			            		HienThiProduct(products,&p);
+			            		Back(&choice);
+							    if(choice==1){
+							    	system("cls");
+							    	continue;
+								}else{
+									return 0;
+								}
+			            		break;
+			            		
+						}
+					}while(choice!=0&&choice!=8);
+			    }
+	
+			}while(choice!=0&&choice!=8);
+			break;
 	
 	case 2://Client
 		break;	
