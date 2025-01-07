@@ -265,7 +265,7 @@ void deleteStore(Store stores[],  int *n,int deletedIds[], int *deletedCount){
 		}
 	} 
 	if(findIndex==-1){
-		printf("\tKhong tim thay danh muc de xoa");
+		printf("\tKhong tim thay danh muc de xoa\n");
 	}else{
 		int choice;
 		YesOrNo(&choice);
@@ -293,7 +293,7 @@ void toLowerCase(char str[]) {
 }
 
 // Ham tim kiem danh mc theo tên
-void FindByName(Store stores[], int n) {
+void FindByName(Store stores[], int *n) {
     char search[100], tempName[100];
     int found = 0;
 
@@ -309,7 +309,7 @@ void FindByName(Store stores[], int n) {
     printf("|    ID    |              Category Name                    |\n");
     printf("|==========|===============================================|\n");
 	int i;
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < *n; i++) {
         strcpy(tempName, stores[i].Name); // Sao chep ten danh muc
         toLowerCase(tempName);           // Chuyen ten danh muc sang chu thuong
 
@@ -382,10 +382,10 @@ void saveStoresToFile(Store stores[], int *n) {
 			
 			//Thao tac voi FILE
 			if(file == NULL){//Kiem tra FIle
-				printf("Khong mo  duoc FILE\n");
+				printf("\tKhong mo  duoc FILE\n");
 			}
 			fwrite(stores, sizeof(Store), *n, file);
-			printf("Luu FILE thanh cong\n");
+			printf("\tLuu FILE thanh cong\n");
 			//Dong FILE
 			fclose(file);	
 }

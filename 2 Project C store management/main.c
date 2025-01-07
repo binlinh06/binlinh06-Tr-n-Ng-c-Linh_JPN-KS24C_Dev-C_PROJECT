@@ -34,6 +34,7 @@ switch(choice){
 	case 1://login admin
 		system("cls");
 		loginAdmin();
+
 		do{
 			MenuStore();
 		    choicee(&choice);
